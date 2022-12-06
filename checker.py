@@ -9,6 +9,10 @@ with open('names.txt', 'r') as f:
     for line in f:
         names.append(line.strip().replace("'", '').lower())
 
+# clear available.txt
+with open('available.txt', 'w') as f:
+    f.write('')
+
 # reverse and remove duplicates
 names.reverse()
 names = list(dict.fromkeys(names))
@@ -39,9 +43,7 @@ def doubleCheck(name: str):
         available.append(name)
 
         with open('available.txt', 'a') as f:
-            for name in available:
-                f.write(f'{name}\n')
-
+            f.write(name + '\n')
     except Exception as e:
         print(e)
         doubleCheck(name)
